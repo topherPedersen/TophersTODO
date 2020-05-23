@@ -83,7 +83,7 @@ class App extends React.Component {
             <Text style={{textAlign: 'center', fontSize: 18, color: "#404040"}}>Topher's TODO App</Text>
           </View>
 
-          <View style={{alignSelf: 'center', flex: 90, width: "100%", backgroundColor: "white"}}>
+          <View style={{alignSelf: 'center', flex: 90, width: "100%", backgroundColor: "red", justifyContent: 'center'}}>
             <TodoList todo={this.state.todo} />
           </View>
 
