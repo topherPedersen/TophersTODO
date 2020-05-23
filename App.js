@@ -11,6 +11,9 @@ import {
 // React-Native Paper
 import { Provider as PaperProvider } from 'react-native-paper';
 
+// Floating Action Button (FAB)
+import { FAB } from 'react-native-paper';
+
 class App extends React.Component {
   constructor(props) {
     super(props);
@@ -19,8 +22,13 @@ class App extends React.Component {
   render() {
     return(
       <PaperProvider>
-        <SafeAreaView>
+        <SafeAreaView style={{flex: 1, backgroundColor: "red"}}>
           <Text>Topher's TODO List App</Text>
+          <FAB 
+            small
+            icon="plus"
+            style={{position: 'absolute', margin: 16, right: 0, bottom: 0}}
+            onPress={ () => alert("Add TODO") } />
         </SafeAreaView>
       </PaperProvider>
     );
