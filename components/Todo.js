@@ -13,7 +13,7 @@ class Todo extends React.PureComponent {
 
   render() {
     return(
-      <View style={{height: 50, flexDirection: 'row'}}>
+      <View style={{height: 100, flexDirection: 'row'}}>
         <Text style={{fontSize: 16, alignSelf: 'center', color: "#404040"}}>{this.props.task}</Text>
       </View>
     );

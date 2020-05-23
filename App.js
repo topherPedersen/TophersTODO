@@ -62,6 +62,12 @@ class App extends React.Component {
         {id: "b@sdfwedsfdfsaasdfz", task: "baz"},
       ],
     };
+
+    /*
+    this.state = {
+      todo: [{id: "f0wesdfs0", task: "foo"}, {id: "f0wesdfsdfs0", task: "foo"}],
+    };
+    */
   }
 
   render() {
@@ -73,7 +79,7 @@ class App extends React.Component {
       <PaperProvider>
         <SafeAreaView style={{flex: 1, backgroundColor: "white"}}>
 
-          <View style={{flex: 10, backgroundColor: "white", justifyContent: 'center', borderBottomWidth: 1, borderColor: "#C0C0C0"}}>
+          <View style={{flex: 10, backgroundColor: "white", justifyContent: 'center', borderBottomWidth: 1, borderColor: "#E8E8E8"}}>
             <Text style={{textAlign: 'center', fontSize: 18, color: "#404040"}}>Topher's TODO App</Text>
           </View>
 
