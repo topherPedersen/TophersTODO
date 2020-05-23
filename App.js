@@ -1,11 +1,8 @@
 import React from 'react';
 import {
   SafeAreaView,
-  StyleSheet,
-  ScrollView,
   View,
   Text,
-  StatusBar,
 } from 'react-native';
 
 // React-Native Paper
@@ -22,12 +19,11 @@ class App extends React.Component {
   render() {
     return(
       <PaperProvider>
-        <SafeAreaView style={{flex: 1, backgroundColor: "red"}}>
+        <SafeAreaView style={{flex: 1, backgroundColor: "white"}}>
           <Text>Topher's TODO List App</Text>
           <FAB 
             icon="plus"
-            label="Add TODO"
-            style={{position: 'absolute', margin: 16, right: 0, bottom: 0}}
+            style={{position: 'absolute', margin: 0, right: 25, bottom: 75}}
             onPress={ () => alert("Add TODO") } />
         </SafeAreaView>
       </PaperProvider>
