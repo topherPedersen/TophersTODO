@@ -8,6 +8,9 @@ import {
   StatusBar,
 } from 'react-native';
 
+// React-Native Paper
+import { Provider as PaperProvider } from 'react-native-paper';
+
 class App extends React.Component {
   constructor(props) {
     super(props);
@@ -15,9 +18,11 @@ class App extends React.Component {
 
   render() {
     return(
-      <SafeAreaView>
-        <Text>Topher's TODO List App</Text>
-      </SafeAreaView>
+      <PaperProvider>
+        <SafeAreaView>
+          <Text>Topher's TODO List App</Text>
+        </SafeAreaView>
+      </PaperProvider>
     );
   }
 }
