@@ -64,8 +64,8 @@ class App extends React.Component {
       <PaperProvider>
         <SafeAreaView style={{flex: 1, backgroundColor: "white"}}>
 
-          <View style={{flex: 10, backgroundColor: "white", justifyContent: 'center'}}>
-            <Text style={{textAlign: 'center', fontSize: 18}}>Topher's TODO App</Text>
+          <View style={{flex: 10, backgroundColor: "white", justifyContent: 'center', borderBottomWidth: 1, borderColor: "#C0C0C0"}}>
+            <Text style={{textAlign: 'center', fontSize: 18, color: "#404040"}}>Topher's TODO App</Text>
           </View>
 
           <View style={{alignSelf: 'center', flex: 90, width: "100%", backgroundColor: "white"}}>
@@ -83,7 +83,8 @@ class App extends React.Component {
           <FAB 
             label="Add TODO"
             icon="plus"
-            style={{position: 'absolute', bottom: "10%", alignSelf: 'center', width: 200}}
+            color="white"
+            style={{position: 'absolute', bottom: "10%", alignSelf: 'center', width: 200, backgroundColor: "purple"}}
             onPress={ () => alert("Add TODO") } />
 
         </SafeAreaView>
