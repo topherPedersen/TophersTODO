@@ -4,6 +4,7 @@ import {
   View,
   Text,
   FlatList,
+  Button,
 } from 'react-native';
 
 // React-Native Paper
@@ -16,6 +17,9 @@ import {
 // Floating Action Button (FAB)
 import { FAB } from 'react-native-paper';
 
+// React-Native Modal
+import Modal from 'react-native-modal';
+
 // Component(s)
 import TodoList from './components/TodoList';
 
@@ -24,6 +28,7 @@ class App extends React.Component {
     super(props);
 
     this.state = {
+      showModal: false,
       todo: [
         {id: "f00", task: "foo"},
         {id: "b@r", task: "bar"},
@@ -71,6 +76,15 @@ class App extends React.Component {
     */
   }
 
+  toggleModal() {
+    // Get Previous State
+    const showModalState = {...this.state};
+    // Toggle Modal Visibility
+    showModalState.showModal = !showModalState.showModal;
+    // Update Local State
+    this.setState(showModalState);
+  }
+
   render() {
 
     // hex: #404040 (nice dark grey)
@@ -93,9 +107,16 @@ class App extends React.Component {
             icon="plus"
             color="white"
             style={{position: 'absolute', bottom: "10%", alignSelf: 'center', width: 200, backgroundColor: "purple"}}
-            onPress={ () => alert("Add TODO") } />
+            onPress={ () => this.toggleModal() } />
 
         </SafeAreaView>
+
+        <Modal isVisible={this.state.showModal}>
+          <View style={{flex: 1, backgroundColor: "white", flexDirection: 'column'}}>
+            <Text>Add TODO Modal</Text>
+            <Button title="Close Modal" onPress={ () => this.toggleModal() } />
+          </View>
+        </Modal>
 
       </PaperProvider>
     );
