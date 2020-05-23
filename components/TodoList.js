@@ -33,8 +33,7 @@ class TodoList extends React.Component {
     if (true) {
       return(
         <>
-        <LottieView style={{backgroundColor: 'white', width: 250, height: 150, alignSelf: 'center'}} source={require('../animations/checklist.json')} autoPlay loop />
-        <Text style={{textAlign: 'center'}}>Tap the button below to get started...</Text>
+        <LottieView style={{backgroundColor: 'white', width: "150%", marginTop: "-5%", marginLeft: "5%", alignSelf: 'center'}} source={require('../animations/checklist.json')} loop={false} autoPlay/>
         </>
       );
     }
