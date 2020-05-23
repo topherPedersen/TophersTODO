@@ -20,12 +20,19 @@ class App extends React.Component {
     return(
       <PaperProvider>
         <SafeAreaView style={{flex: 1, backgroundColor: "white"}}>
+
           <Text>Topher's TODO List App</Text>
-          <FAB 
-            icon="plus"
-            style={{position: 'absolute', margin: 0, right: 25, bottom: 75}}
-            onPress={ () => alert("Add TODO") } />
+
+          <View style={{position: 'absolute', bottom: 100, backgroundColor: "orange", width: "100%", height: 100}}>
+            {/*
+            <FAB 
+              icon="plus"
+              onPress={ () => alert("Add TODO") } />
+            */}
+          </View>
+
         </SafeAreaView>
+
       </PaperProvider>
     );
   }
