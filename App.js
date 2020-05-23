@@ -64,11 +64,11 @@ class App extends React.Component {
       <PaperProvider>
         <SafeAreaView style={{flex: 1, backgroundColor: "white"}}>
 
-          <View style={{position: 'absolute', top: "10%", backgroundColor: "white", width: "100%"}}>
-            <Text style={{textAlign: 'center', fontSize: 20}}>Topher's TODO App</Text>
+          <View style={{flex: 10, backgroundColor: "white", justifyContent: 'center'}}>
+            <Text style={{textAlign: 'center', fontSize: 18}}>Topher's TODO App</Text>
           </View>
 
-          <View style={{alignSelf: 'center', marginTop: "40%", width: "100%", height: "100%", backgroundColor: "white"}}>
+          <View style={{alignSelf: 'center', flex: 90, width: "100%", backgroundColor: "white"}}>
             <FlatList
               style={{alignContent: 'center'}}
               data={this.state.todo}
@@ -83,7 +83,7 @@ class App extends React.Component {
           <FAB 
             label="Add TODO"
             icon="plus"
-            style={{position: 'absolute', bottom: "10%", alignSelf: 'center', width: 175}}
+            style={{position: 'absolute', bottom: "10%", alignSelf: 'center', width: 200}}
             onPress={ () => alert("Add TODO") } />
 
         </SafeAreaView>
