@@ -23,12 +23,12 @@ class App extends React.Component {
 
           <Text>Topher's TODO List App</Text>
 
-          <View style={{position: 'absolute', bottom: 100, backgroundColor: "orange", width: "100%", height: 100}}>
-            {/*
+          <View style={{position: 'absolute', bottom: 100, backgroundColor: "white", width: "100%"}}>
             <FAB 
+              label="Add TODO"
               icon="plus"
+              style={{alignSelf: 'center', width: 175}}
               onPress={ () => alert("Add TODO") } />
-            */}
           </View>
 
         </SafeAreaView>
