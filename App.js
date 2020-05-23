@@ -80,13 +80,11 @@ class App extends React.Component {
               }/>
           </View>
 
-          <View style={{position: 'absolute', bottom: "10%", backgroundColor: "white", width: "100%"}}>
-            <FAB 
-              label="Add TODO"
-              icon="plus"
-              style={{alignSelf: 'center', width: 175}}
-              onPress={ () => alert("Add TODO") } />
-          </View>
+          <FAB 
+            label="Add TODO"
+            icon="plus"
+            style={{position: 'absolute', bottom: "10%", alignSelf: 'center', width: 175}}
+            onPress={ () => alert("Add TODO") } />
 
         </SafeAreaView>
 
