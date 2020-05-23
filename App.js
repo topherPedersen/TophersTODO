@@ -7,10 +7,16 @@ import {
 } from 'react-native';
 
 // React-Native Paper
-import { Provider as PaperProvider } from 'react-native-paper';
+import { 
+  Provider as PaperProvider,
+  Divider,
+} from 'react-native-paper';
 
 // Floating Action Button (FAB)
 import { FAB } from 'react-native-paper';
+
+// Component(s)
+import Todo from './components/Todo';
 
 class App extends React.Component {
   constructor(props) {
@@ -60,6 +66,9 @@ class App extends React.Component {
 
   render() {
 
+    // hex: #404040 (nice dark grey)
+    // hex: #C0C0C0 (light grey)
+
     return(
       <PaperProvider>
         <SafeAreaView style={{flex: 1, backgroundColor: "white"}}>
@@ -70,13 +79,14 @@ class App extends React.Component {
 
           <View style={{alignSelf: 'center', flex: 90, width: "100%", backgroundColor: "white"}}>
             <FlatList
+              ItemSeparatorComponent={ () => (
+                <Divider />
+              )}
               style={{alignContent: 'center'}}
               data={this.state.todo}
               keyExtractor={ item => item.id }
               renderItem={ ({item}) => 
-                <View>
-                  <Text style={{fontSize: 16}}>task: {item.task}</Text>
-                </View>
+                <Todo task={item.task} />
               }/>
           </View>
 
