@@ -36,7 +36,16 @@ class App extends React.Component {
           </View>
 
           <View style={{alignSelf: 'center', marginTop: "40%", width: "100%", height: "100%", backgroundColor: "white"}}>
-
+            <FlatList
+              style={{alignContent: 'center'}}
+              data={this.state.todo}
+              keyExtractor={ item => item.id }
+              renderItem={ ({item}) => 
+                <View>
+                  <Text>id: {item.id}</Text>
+                  <Text>task: {item.task}</Text>
+                </View>
+              }/>
           </View>
 
           <View style={{position: 'absolute', bottom: "10%", backgroundColor: "white", width: "100%"}}>
