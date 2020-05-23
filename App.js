@@ -16,7 +16,7 @@ import {
 import { FAB } from 'react-native-paper';
 
 // Component(s)
-import Todo from './components/Todo';
+import TodoList from './components/TodoList';
 
 class App extends React.Component {
   constructor(props) {
@@ -84,16 +84,7 @@ class App extends React.Component {
           </View>
 
           <View style={{alignSelf: 'center', flex: 90, width: "100%", backgroundColor: "white"}}>
-            <FlatList
-              ItemSeparatorComponent={ () => (
-                <Divider />
-              )}
-              style={{alignContent: 'center'}}
-              data={this.state.todo}
-              keyExtractor={ item => item.id }
-              renderItem={ ({item}) => 
-                <Todo task={item.task} />
-              }/>
+            <TodoList todo={this.state.todo} />
           </View>
 
           <FAB 
