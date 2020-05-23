@@ -21,9 +21,11 @@ class App extends React.Component {
       <PaperProvider>
         <SafeAreaView style={{flex: 1, backgroundColor: "white"}}>
 
-          <Text>Topher's TODO List App</Text>
+          <View style={{position: 'absolute', top: "10%", backgroundColor: "white", width: "100%"}}>
+            <Text style={{textAlign: 'center', fontSize: 20}}>Topher's TODO App</Text>
+          </View>
 
-          <View style={{position: 'absolute', bottom: 100, backgroundColor: "white", width: "100%"}}>
+          <View style={{position: 'absolute', bottom: "10%", backgroundColor: "white", width: "100%"}}>
             <FAB 
               label="Add TODO"
               icon="plus"
