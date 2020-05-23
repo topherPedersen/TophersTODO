@@ -10,6 +10,7 @@ import {
 import { 
   Provider as PaperProvider,
   Divider,
+  Title,
 } from 'react-native-paper';
 
 // Floating Action Button (FAB)
@@ -80,7 +81,7 @@ class App extends React.Component {
         <SafeAreaView style={{flex: 1, backgroundColor: "white"}}>
 
           <View style={{flex: 10, backgroundColor: "white", justifyContent: 'center', borderBottomWidth: 1, borderColor: "#E8E8E8"}}>
-            <Text style={{textAlign: 'center', fontSize: 18, color: "#404040"}}>Topher's TODO App</Text>
+            <Title style={{textAlign: 'center', fontSize: 18, color: "#404040"}}>Topher's TODO App</Title>
           </View>
 
           <View style={{alignSelf: 'center', flex: 90, width: "100%", backgroundColor: "white", justifyContent: 'center'}}>
