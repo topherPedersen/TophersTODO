@@ -25,8 +25,8 @@ class App extends React.Component {
         <SafeAreaView style={{flex: 1, backgroundColor: "red"}}>
           <Text>Topher's TODO List App</Text>
           <FAB 
-            small
             icon="plus"
+            label="Add TODO"
             style={{position: 'absolute', margin: 16, right: 0, bottom: 0}}
             onPress={ () => alert("Add TODO") } />
         </SafeAreaView>
