@@ -105,6 +105,9 @@ class TodoApp extends React.Component {
     */
   }
 
+  // REFERENCE (CSS box-shadow in React-Native)
+  // https://github.com/styled-components/styled-components/issues/709
+
   render() {
 
     // hex: #404040 (nice dark grey)
@@ -115,7 +118,7 @@ class TodoApp extends React.Component {
       <>
         <SafeAreaView style={{flex: 1, backgroundColor: "white"}}>
 
-          <View style={{flex: 10, backgroundColor: "white", justifyContent: 'center', borderBottomWidth: 1, borderColor: "#E8E8E8"}}>
+          <View style={{flex: 10, backgroundColor: "white", justifyContent: 'center', borderBottomWidth: 1, borderColor: "#E8E8E8", shadowColor: '#000', shadowOffset: { width: 0, height: 2 }, shadowOpacity: 0.8, shadowRadius: 2, elevation: 7,}}>
             <Title style={{textAlign: 'center', fontSize: 18, color: "#404040"}}>Topher's TODO App</Title>
           </View>
 
