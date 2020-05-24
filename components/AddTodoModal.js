@@ -37,6 +37,15 @@ import {
   CLOSE_MODAL,
 } from '../actions/types';
 
+// Generate a random string of characters 
+// (Utility function for creating unique ids)
+function uniqueID() {
+  let a = Math.random().toString(36).substring(2);
+  let b = Math.random().toString(36).substring(2);
+  let uniqueStringOfRandomCharacters = a + b;
+  return uniqueStringOfRandomCharacters;
+}
+
 class AddTodoModal extends React.PureComponent {
   constructor(props) {
     super(props);
@@ -55,6 +64,8 @@ class AddTodoModal extends React.PureComponent {
     // Retrieve new todo item from local state
     const newTodo = this.state.inputText;
 
+    const newTodoID = uniqueID();
+
     // clear TextInput (local state)
     this.setState({inputText: ""});
 
@@ -62,7 +73,7 @@ class AddTodoModal extends React.PureComponent {
     this.props.closeModal();
 
     // Add new todo to Redux Store
-    this.props.addTodo({task: newTodo});
+    this.props.addTodo({task: newTodo, id: newTodoID});
   }
 
   // REFERENCE (BUG FIX FOR AUTOFOCUSING TEXT INPUT ON MODAL IN REACT NATIVE)
