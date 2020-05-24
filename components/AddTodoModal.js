@@ -67,6 +67,7 @@ class AddTodoModal extends React.PureComponent {
 
           <PaperButton 
             mode="contained"
+            style={{backgroundColor: "purple"}}
             onPress={ () => this.props.toggleModal() }>
             Save
           </PaperButton>
