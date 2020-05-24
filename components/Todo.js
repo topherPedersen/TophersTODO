@@ -18,7 +18,7 @@ import {
 } from 'react-redux';
 // Redux Action(s)
 import { 
-  ADD_TODO,
+  MARK_COMPLETED,
 } from '../actions/types';
 
 class Todo extends React.PureComponent {
@@ -40,7 +40,7 @@ class Todo extends React.PureComponent {
 
       <View style={{height: 100, flexDirection: 'row'}}>
 
-        <LottieView style={{backgroundColor: 'white', height: 50, marginTop: 3, marginLeft: 10, alignSelf: 'center'}} source={require('../animations/attention.json')} loop={false} autoPlay/>
+        <LottieView style={{backgroundColor: 'white', height: 50, marginTop: 3, marginLeft: 10, alignSelf: 'center'}} source={ item.props.completed ? require('../animations/checkmark.json') : require('../animations/attention.json')} loop={false} autoPlay/>
 
         <Text style={{fontSize: 15, alignSelf: 'center', marginLeft: 25, color: "#404040"}}>{todoText}</Text>
 
@@ -64,7 +64,7 @@ const mapStateToProps = (state) => {
 };
 const mapDispatchToProps = dispatch => {
   return {
-    addTodo: (payload) => dispatch({type: ADD_TODO, payload: payload}),
+    markCompleted: (payload) => dispatch({type: MARK_COMPLETED, payload: payload}),
   };
 };
 export default connect(mapStateToProps, mapDispatchToProps)(Todo);

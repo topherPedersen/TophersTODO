@@ -58,7 +58,10 @@ class TodoList extends React.Component {
         data={this.props.todos.todo}
         keyExtractor={ item => item.id }
         renderItem={ ({item}) => 
-          <Todo task={item.task} />
+          <Todo 
+            task={item.task} 
+            id={item.id} 
+            completed={item.completed} />
         }/>
     );
   }

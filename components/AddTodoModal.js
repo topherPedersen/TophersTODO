@@ -62,9 +62,15 @@ class AddTodoModal extends React.PureComponent {
   // in order to add a new todo to the todo app
   handleAddTodo() {
     // Retrieve new todo item from local state
-    const newTodo = this.state.inputText;
+    const newTodoTask = this.state.inputText;
 
     const newTodoID = uniqueID();
+
+    const newTodoObj = {
+      task: newTodoTask,
+      id: newTodoID,
+      completed: false,
+    };
 
     // clear TextInput (local state)
     this.setState({inputText: ""});
@@ -73,7 +79,7 @@ class AddTodoModal extends React.PureComponent {
     this.props.closeModal();
 
     // Add new todo to Redux Store
-    this.props.addTodo({task: newTodo, id: newTodoID});
+    this.props.addTodo(newTodoObj);
   }
 
   // REFERENCE (BUG FIX FOR AUTOFOCUSING TEXT INPUT ON MODAL IN REACT NATIVE)

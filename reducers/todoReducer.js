@@ -1,3 +1,9 @@
+// Redux Action(s)
+import { 
+  ADD_TODO,
+  MARK_COMPLETED,
+} from '../actions/types';
+
 const initialState = {
   todo: [],
 };
@@ -11,11 +17,15 @@ const todoReducer = (state, action) => {
   }
 
   switch (action.type) {
-    case 'ADD_TODO':
+    case ADD_TODO:
       const addTodoState = {...state};
       const newTodo = action.payload;
       addTodoState.todo.push(newTodo);
       return addTodoState;
+    case MARK_COMPLETED:
+      const markCompletedState = {...state};
+      const completedTodoID = action.payload;
+      return {...state};
     default:
       return {...state};
   }
