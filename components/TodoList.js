@@ -39,7 +39,8 @@ class TodoList extends React.Component {
 
   render() {
 
-    if (true) {
+    // If the todo-list is empty, display a placeholder (checklist animation)
+    if (this.props.todos.todo.length === 0) {
       return(
         <>
         <LottieView style={{backgroundColor: 'white', width: "150%", marginTop: "-5%", marginLeft: "5%", alignSelf: 'center'}} source={require('../animations/checklist.json')} loop={false} autoPlay/>
@@ -47,6 +48,7 @@ class TodoList extends React.Component {
       );
     }
 
+    // If the todo-list is NOT empty, display the todos in a FlatList
     return(
       <FlatList
         ItemSeparatorComponent={ () => (
@@ -65,7 +67,7 @@ class TodoList extends React.Component {
 // Connect Redux Store, and Redux Action(s)
 const mapStateToProps = (state) => {
   return { 
-    todos: state.todo,
+    todos: state.todos,
   };
 };
 const mapDispatchToProps = dispatch => {
