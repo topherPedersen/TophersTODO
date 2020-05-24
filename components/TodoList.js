@@ -55,7 +55,7 @@ class TodoList extends React.Component {
           <Divider />
         )}
         style={{alignContent: 'center'}}
-        data={this.props.todos}
+        data={this.props.todos.todo}
         keyExtractor={ item => item.id }
         renderItem={ ({item}) => 
           <Todo task={item.task} />
