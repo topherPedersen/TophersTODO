@@ -23,9 +23,25 @@ const todoReducer = (state, action) => {
       addTodoState.todo.push(newTodo);
       return addTodoState;
     case MARK_COMPLETED:
+      // Make copy of previous state
       const markCompletedState = {...state};
+      // ID of task to be marked completed
       const completedTodoID = action.payload;
-      return {...state};
+      // Identify the completed todo item, and mark it complete
+      const updatedTodoArray = markCompletedState.todo.map( (todo) => {
+        if (todo.id !== completedTodoID) {
+          return todo;
+        } else if (todo.id === completedTodoID) {
+          const updatedTodo = {
+            task: todo.task,
+            id: todo.id,
+            completed: true,
+          };
+          return updatedTodo;
+        }
+      });
+      markCompletedState.todo = updatedTodoArray;
+      return markCompletedState;
     default:
       return {...state};
   }
