@@ -54,7 +54,7 @@ class Todo extends React.PureComponent {
 
         <LottieView style={{backgroundColor: 'white', height: 50, marginTop: 3, marginLeft: 10, alignSelf: 'center'}} source={ this.props.completed ? require('../animations/checkmark.json') : require('../animations/attention.json')} loop={false} autoPlay/>
 
-        <Text style={{fontSize: 15, alignSelf: 'center', marginLeft: 25, color: "#404040"}}>{todoText}</Text>
+        <Text style={{fontSize: 15, alignSelf: 'center', marginLeft: 25, color: "#404040", textDecorationLine: this.props.completed ? 'line-through' : 'none'}}>{todoText}</Text>
 
         <View style={{backgroundColor: 'white', alignSelf: 'stretch', flex: 1, flexDirection: 'row-reverse', alignItems: 'center', marginLeft: 30}}>
           <Checkbox 
