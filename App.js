@@ -5,6 +5,9 @@ import {
   Text,
   FlatList,
   Button,
+  Platform,
+  Dimensions,
+  TextInput,
 } from 'react-native';
 
 // React-Native Paper
@@ -12,7 +15,10 @@ import {
   Provider as PaperProvider,
   Divider,
   Title,
+  Button as PaperButton,
 } from 'react-native-paper';
+
+import Icon from 'react-native-vector-icons/Ionicons';
 
 // Floating Action Button (FAB)
 import { FAB } from 'react-native-paper';
@@ -22,6 +28,24 @@ import Modal from 'react-native-modal';
 
 // Component(s)
 import TodoList from './components/TodoList';
+
+// Calculate device dimensions and create platform dependent CSS wrappers
+// for use on the add-todo modal:
+const deviceWidth = Dimensions.get('window').width;
+if (Platform.OS === 'android') {
+  var textInputWrapperStyling = {flexDirection: 'row', justifyContent: 'center'};
+  var awesomeButtonWraperStyling = {flexDirection: 'row', justifyContent: 'center', paddingBottom: '1%' };
+  var closeIconOuterWrapperStyling = {flexDirection: 'column-reverse', flex: 98};
+  var closeIconInnerWrapperStyling = {flexDirection: 'row-reverse', flex: 1 };
+} else if (Platform.OS === 'ios') {
+  var textInputWrapperStyling = {flexDirection: 'row', justifyContent: 'center'};
+  var awesomeButtonWraperStyling = {flexDirection: 'row', justifyContent: 'center', paddingBottom: '75%' };
+  var closeIconOuterWrapperStyling = {flexDirection: 'column-reverse', flex: 98, paddingTop: 50};
+  var closeIconInnerWrapperStyling = {flexDirection: 'row-reverse', flex: 1 };
+}
+const saveButtonWidth = deviceWidth * 0.95;
+const saveTextInputWidth = saveButtonWidth;
+const saveScreenFontSize = 24;
 
 class App extends React.Component {
   constructor(props) {
@@ -112,10 +136,58 @@ class App extends React.Component {
         </SafeAreaView>
 
         <Modal isVisible={this.state.showModal}>
+
+          {/*
           <View style={{flex: 1, backgroundColor: "white", flexDirection: 'column'}}>
             <Text>Add TODO Modal</Text>
             <Button title="Close Modal" onPress={ () => this.toggleModal() } />
           </View>
+          */}
+          <View style={{flexDirection: 'column-reverse', flex: 100, backgroundColor: 'white'}}>
+
+            <View style={awesomeButtonWraperStyling}>
+
+              {/*
+              <AwesomeButton
+                raiseLevel={3}
+                type={'primary'}
+                backgroundColor={'#23e000'}
+                width={saveButtonWidth}
+                onPress={ () => this.saveThenGoBackAndClearTextInput() } >
+                <Text style={{color: '#FFFFFF', fontSize: saveScreenFontSize}}>Save</Text>
+              </AwesomeButton>
+              */}
+
+              <PaperButton 
+                mode="contained"
+                onPress={ () => this.toggleModal() }>
+                Save
+              </PaperButton>
+
+            </View>
+
+            <View style={textInputWrapperStyling}>
+              <TextInput 
+                style={{width: saveTextInputWidth, borderStyle: 'solid', borderWidth: 2, borderRadius: 5, borderColor: 'grey', fontSize: saveScreenFontSize, padding: 11, marginBottom: 3}}
+                placeholder=" Enter Thing TODO Here"
+                autoFocus={true}
+                onChangeText={ (text) => console.log(text) }
+                value={ this.state.logCaloriesTextInput } />
+            </View>
+
+            <View style={closeIconOuterWrapperStyling}>
+              <View style={closeIconInnerWrapperStyling}>
+                <Icon 
+                  style={{marginTop: 35, marginRight: 50}}
+                  name="md-close" 
+                  size={50} 
+                  color="#000000" 
+                  onPress={ () => this.toggleModal() } />
+              </View>
+            </View>
+
+          </View>
+
         </Modal>
 
       </PaperProvider>
