@@ -8,6 +8,8 @@ import {
   Platform,
   Dimensions,
   TextInput,
+  Keyboard,
+  Modal,
 } from 'react-native';
 
 // React-Native Paper
@@ -24,7 +26,7 @@ import Icon from 'react-native-vector-icons/Ionicons';
 import { FAB } from 'react-native-paper';
 
 // React-Native Modal
-import Modal from 'react-native-modal';
+// import Modal from 'react-native-modal';
 
 // Component(s)
 import TodoList from './components/TodoList';
@@ -117,8 +119,8 @@ class App extends React.Component {
 
         </SafeAreaView>
 
-        <Modal isVisible={this.state.showModal}>
-          <View style={{flex: 100, backgroundColor: 'white', justifyContent: 'center'}}>
+        <Modal visible={true}>
+          <View style={{flex: 100, backgroundColor: 'white', justifyContent: 'flex-end'}}>
 
             <Icon 
               style={{position: 'absolute', top: 25, right: 25}}
