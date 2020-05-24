@@ -26,7 +26,7 @@ class Todo extends React.PureComponent {
   render() {
     return(
       <View style={{height: 100, flexDirection: 'row'}}>
-        <LottieView style={{backgroundColor: 'white', height: 50, marginTop: 3, alignSelf: 'center'}} source={require('../animations/attention.json')} loop={false} autoPlay/>
+        <LottieView style={{backgroundColor: 'white', height: 50, marginTop: 3, marginLeft: 10, alignSelf: 'center'}} source={require('../animations/attention.json')} loop={false} autoPlay/>
         <Text style={{fontSize: 18, alignSelf: 'center', marginLeft: 25, color: "#404040"}}>{this.props.task}</Text>
       </View>
     );
