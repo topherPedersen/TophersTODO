@@ -30,13 +30,27 @@ import { FAB } from 'react-native-paper';
 class AddTodoModal extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      closeModal: false,
+    };
+  }
+
+  closeModal() {
+    this.setState({closeModal: true});
   }
 
 
   render() {
+
+    let shouldDisplayModal;
+    if (this.state.closeModal !== true && this.props.visible === true) {
+      shouldDisplayModal = true;
+    } else {
+      shouldDisplayModal = false;
+    }
+
     return(
-      <Modal visible={this.props.visible}>
+      <Modal visible={shouldDisplayModal}>
 
         <View style={{flex: 100, backgroundColor: 'white', justifyContent: 'flex-end'}}>
 
@@ -45,7 +59,7 @@ class AddTodoModal extends React.Component {
             name="md-close" 
             size={50} 
             color="#000000" 
-            onPress={ () => alert("toggle modal!") } />
+            onPress={ () => this.closeModal() } />
 
           <TextInput 
             style={{}}
@@ -56,7 +70,7 @@ class AddTodoModal extends React.Component {
 
           <PaperButton 
             mode="contained"
-            onPress={ () => alert("toggle modal!") }>
+            onPress={ () => this.closeModal() }>
             Save
           </PaperButton>
 
