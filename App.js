@@ -28,6 +28,24 @@ import { FAB } from 'react-native-paper';
 import TodoList from './components/TodoList';
 import AddTodoModal from './components/AddTodoModal';
 
+// React-Redux
+import { 
+  createStore,
+  combineReducers,
+} from 'redux';
+import { 
+  connect, 
+  Provider 
+} from 'react-redux';
+
+import todoReducer from './reducers/todoReducer';
+
+// Intialize Redux Store
+const rootReducer = combineReducers({
+  todos: todoReducer
+});
+const store = createStore(rootReducer);
+
 class App extends React.Component {
   constructor(props) {
     super(props);
@@ -96,31 +114,33 @@ class App extends React.Component {
     // hex: #C0C0C0 (light grey)
 
     return(
-      <PaperProvider>
-        <SafeAreaView style={{flex: 1, backgroundColor: "white"}}>
+      <Provider store={store}>
+        <PaperProvider>
+          <SafeAreaView style={{flex: 1, backgroundColor: "white"}}>
 
-          <View style={{flex: 10, backgroundColor: "white", justifyContent: 'center', borderBottomWidth: 1, borderColor: "#E8E8E8"}}>
-            <Title style={{textAlign: 'center', fontSize: 18, color: "#404040"}}>Topher's TODO App</Title>
-          </View>
+            <View style={{flex: 10, backgroundColor: "white", justifyContent: 'center', borderBottomWidth: 1, borderColor: "#E8E8E8"}}>
+              <Title style={{textAlign: 'center', fontSize: 18, color: "#404040"}}>Topher's TODO App</Title>
+            </View>
 
-          <View style={{alignSelf: 'center', flex: 90, width: "100%", backgroundColor: "white", justifyContent: 'center'}}>
-            <TodoList todo={this.state.todo} />
-          </View>
+            <View style={{alignSelf: 'center', flex: 90, width: "100%", backgroundColor: "white", justifyContent: 'center'}}>
+              <TodoList todo={this.state.todo} />
+            </View>
 
-          <FAB 
-            label="Add TODO"
-            icon="plus"
-            color="white"
-            style={{position: 'absolute', bottom: "10%", alignSelf: 'center', width: 200, backgroundColor: "purple"}}
-            onPress={ () => this.toggleModal() } />
+            <FAB 
+              label="Add TODO"
+              icon="plus"
+              color="white"
+              style={{position: 'absolute', bottom: "10%", alignSelf: 'center', width: 200, backgroundColor: "purple"}}
+              onPress={ () => this.toggleModal() } />
 
-        </SafeAreaView>
+          </SafeAreaView>
 
-        <AddTodoModal 
-          visible={this.state.showModal} 
-          toggleModal={this.toggleModal.bind(this)} />
+          <AddTodoModal 
+            visible={this.state.showModal} 
+            toggleModal={this.toggleModal.bind(this)} />
 
-      </PaperProvider>
+        </PaperProvider>
+      </Provider>
     );
   }
 }
