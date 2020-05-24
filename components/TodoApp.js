@@ -42,6 +42,7 @@ class TodoApp extends React.Component {
   constructor(props) {
     super(props);
 
+    /*
     this.state = {
       showModal: false,
       todo: [
@@ -83,6 +84,7 @@ class TodoApp extends React.Component {
         {id: "b@sdfwedsfdfsaasdfz", task: "baz"},
       ],
     };
+    */
 
     /*
     this.state = {
@@ -115,7 +117,7 @@ class TodoApp extends React.Component {
           </View>
 
           <View style={{alignSelf: 'center', flex: 90, width: "100%", backgroundColor: "white", justifyContent: 'center'}}>
-            <TodoList todo={this.state.todo} />
+            <TodoList />
           </View>
 
           <FAB 
@@ -127,9 +129,7 @@ class TodoApp extends React.Component {
 
         </SafeAreaView>
 
-        <AddTodoModal 
-          visible={this.state.showModal} 
-          toggleModal={this.toggleModal.bind(this)} />
+        <AddTodoModal />
       </>
 
 
