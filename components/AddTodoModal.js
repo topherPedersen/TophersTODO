@@ -8,7 +8,7 @@ import {
   Platform,
   Dimensions,
   TextInput,
-  Keyboard,
+  KeyboardAvoidingView,
 } from 'react-native';
 
 // React-Native Modal
@@ -27,11 +27,14 @@ import Icon from 'react-native-vector-icons/Ionicons';
 // Floating Action Button (FAB)
 import { FAB } from 'react-native-paper';
 
-class AddTodoModal extends React.Component {
+class AddTodoModal extends React.PureComponent {
   constructor(props) {
     super(props);
     this.state = {};
   }
+
+  // REFERENCE (BUG FIX FOR AUTOFOCUSING TEXT INPUT ON MODAL IN REACT NATIVE)
+  // https://stackoverflow.com/questions/42730400/focus-input-on-load-of-modal-in-react-native
 
   render() {
 
@@ -42,9 +45,11 @@ class AddTodoModal extends React.Component {
     }
 
     return(
-      <Modal visible={true}>
+      <Modal 
+        visible={this.props.visible}
+        onShow={ () => { this.textInput.focus(); }}>
 
-        <View style={{flex: 100, backgroundColor: 'white', justifyContent: 'flex-end'}}>
+        <KeyboardAvoidingView style={{flex: 100, backgroundColor: 'white', justifyContent: 'flex-end'}}>
 
           <Icon 
             style={{position: 'absolute', top: 25, right: 25}}
@@ -55,8 +60,8 @@ class AddTodoModal extends React.Component {
 
           <TextInput 
             style={{}}
+            ref={ (input) => { this.textInput = input; }}
             placeholder=" Enter Thing TODO Here"
-            autoFocus={true}
             onChangeText={ (text) => console.log(text) }
             value={ null } />
 
@@ -66,7 +71,7 @@ class AddTodoModal extends React.Component {
             Save
           </PaperButton>
 
-        </View>
+        </KeyboardAvoidingView>
 
       </Modal>
     );
