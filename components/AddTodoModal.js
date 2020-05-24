@@ -40,7 +40,13 @@ import {
 class AddTodoModal extends React.PureComponent {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      inputText: "",
+    };
+  }
+
+  handleTextInput(text) {
+    this.setState({inputText: text});
   }
 
   // REFERENCE (BUG FIX FOR AUTOFOCUSING TEXT INPUT ON MODAL IN REACT NATIVE)
@@ -72,13 +78,13 @@ class AddTodoModal extends React.PureComponent {
             style={{}}
             ref={ (input) => { this.textInput = input; }}
             placeholder=" Enter Thing TODO Here"
-            onChangeText={ (text) => console.log(text) }
+            onChangeText={ (text) => this.handleTextInput(text) }
             value={ null } />
 
           <PaperButton 
             mode="contained"
             style={{backgroundColor: "purple"}}
-            onPress={ () => this.props.closeModal() }>
+            onPress={ () => alert(this.state.inputText) }>
             Save
           </PaperButton>
 
