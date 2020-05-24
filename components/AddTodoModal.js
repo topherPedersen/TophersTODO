@@ -34,6 +34,7 @@ import {
 // Redux Action(s)
 import { 
   ADD_TODO,
+  CLOSE_MODAL,
 } from '../actions/types';
 
 class AddTodoModal extends React.PureComponent {
@@ -65,7 +66,7 @@ class AddTodoModal extends React.PureComponent {
             name="md-close" 
             size={50} 
             color="#000000" 
-            onPress={ () => this.props.toggleModal() } />
+            onPress={ () => this.props.closeModal() } />
 
           <TextInput 
             style={{}}
@@ -77,7 +78,7 @@ class AddTodoModal extends React.PureComponent {
           <PaperButton 
             mode="contained"
             style={{backgroundColor: "purple"}}
-            onPress={ () => this.props.toggleModal() }>
+            onPress={ () => this.props.closeModal() }>
             Save
           </PaperButton>
 
@@ -99,6 +100,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = dispatch => {
   return {
     addTodo: (payload) => dispatch({type: ADD_TODO, payload: payload}),
+    closeModal: () => dispatch({type: CLOSE_MODAL, payload: null}),
   };
 };
 export default connect(mapStateToProps, mapDispatchToProps)(AddTodoModal);
