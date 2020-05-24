@@ -19,6 +19,7 @@ import {
 // Redux Action(s)
 import { 
   MARK_COMPLETED,
+  MARK_NOT_COMPLETED,
 } from '../actions/types';
 
 class Todo extends React.PureComponent {
@@ -32,6 +33,8 @@ class Todo extends React.PureComponent {
     // alert(id);
     if (!completed) {
       this.props.markCompleted(id);
+    } else if (completed) {
+      this.props.markNotCompleted(id);
     }
   }
 
@@ -75,6 +78,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = dispatch => {
   return {
     markCompleted: (payload) => dispatch({type: MARK_COMPLETED, payload: payload}),
+    markNotCompleted: (payload) => dispatch({type: MARK_NOT_COMPLETED, payload: payload}),
   };
 };
 export default connect(mapStateToProps, mapDispatchToProps)(Todo);

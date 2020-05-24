@@ -2,6 +2,7 @@
 import { 
   ADD_TODO,
   MARK_COMPLETED,
+  MARK_NOT_COMPLETED,
 } from '../actions/types';
 
 const initialState = {
@@ -42,6 +43,26 @@ const todoReducer = (state, action) => {
       });
       markCompletedState.todo = updatedTodoArray;
       return markCompletedState;
+      case MARK_NOT_COMPLETED:
+        // Make copy of previous state
+        const markNotCompletedState = {...state};
+        // ID of task to be marked completed
+        const notCompletedTodoID = action.payload;
+        // Identify the completed todo item, and mark it complete
+        const markNotCompletedTodoArray = markNotCompletedState.todo.map( (todo) => {
+          if (todo.id !== notCompletedTodoID) {
+            return todo;
+          } else if (todo.id === notCompletedTodoID) {
+            const markNotCompletedTodo = {
+              task: todo.task,
+              id: todo.id,
+              completed: false,
+            };
+            return markNotCompletedTodo;
+          }
+        });
+        markNotCompletedState.todo = markNotCompletedTodoArray;
+        return markNotCompletedState;
     default:
       return {...state};
   }
