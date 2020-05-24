@@ -116,7 +116,9 @@ class App extends React.Component {
 
         </SafeAreaView>
 
-        <AddTodoModal visible={this.state.showModal} />
+        <AddTodoModal 
+          visible={this.state.showModal} 
+          toggleModal={this.toggleModal.bind(this)} />
 
       </PaperProvider>
     );

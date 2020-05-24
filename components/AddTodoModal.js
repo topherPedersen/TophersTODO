@@ -33,11 +33,6 @@ class AddTodoModal extends React.Component {
     this.state = {};
   }
 
-  closeModal() {
-    alert("close modal!");
-  }
-
-
   render() {
 
     // If the modal is current NOT visible,
@@ -56,7 +51,7 @@ class AddTodoModal extends React.Component {
             name="md-close" 
             size={50} 
             color="#000000" 
-            onPress={ () => this.closeModal() } />
+            onPress={ () => this.props.toggleModal() } />
 
           <TextInput 
             style={{}}
@@ -67,7 +62,7 @@ class AddTodoModal extends React.Component {
 
           <PaperButton 
             mode="contained"
-            onPress={ () => this.closeModal() }>
+            onPress={ () => this.props.toggleModal() }>
             Save
           </PaperButton>
 
