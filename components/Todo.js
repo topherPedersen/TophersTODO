@@ -6,6 +6,9 @@ import {
   FlatList,
 } from 'react-native';
 
+// Import Lottie Animation Library
+import LottieView from 'lottie-react-native';
+
 // React-Redux
 import { 
   connect, 
@@ -23,6 +26,7 @@ class Todo extends React.PureComponent {
   render() {
     return(
       <View style={{height: 100, flexDirection: 'row'}}>
+        <LottieView style={{backgroundColor: 'white', height: 90}} source={require('../animations/attention.json')} loop={false} autoPlay/>
         <Text style={{fontSize: 16, alignSelf: 'center', color: "#404040"}}>{this.props.task}</Text>
       </View>
     );
