@@ -29,24 +29,6 @@ import Modal from 'react-native-modal';
 // Component(s)
 import TodoList from './components/TodoList';
 
-// Calculate device dimensions and create platform dependent CSS wrappers
-// for use on the add-todo modal:
-const deviceWidth = Dimensions.get('window').width;
-if (Platform.OS === 'android') {
-  var textInputWrapperStyling = {flexDirection: 'row', justifyContent: 'center'};
-  var awesomeButtonWraperStyling = {flexDirection: 'row', justifyContent: 'center', paddingBottom: '1%' };
-  var closeIconOuterWrapperStyling = {flexDirection: 'column-reverse', flex: 98};
-  var closeIconInnerWrapperStyling = {flexDirection: 'row-reverse', flex: 1 };
-} else if (Platform.OS === 'ios') {
-  var textInputWrapperStyling = {flexDirection: 'row', justifyContent: 'center'};
-  var awesomeButtonWraperStyling = {flexDirection: 'row', justifyContent: 'center', paddingBottom: '75%' };
-  var closeIconOuterWrapperStyling = {flexDirection: 'column-reverse', flex: 98, paddingTop: 50};
-  var closeIconInnerWrapperStyling = {flexDirection: 'row-reverse', flex: 1 };
-}
-const saveButtonWidth = deviceWidth * 0.95;
-const saveTextInputWidth = saveButtonWidth;
-const saveScreenFontSize = 24;
-
 class App extends React.Component {
   constructor(props) {
     super(props);
@@ -136,58 +118,29 @@ class App extends React.Component {
         </SafeAreaView>
 
         <Modal isVisible={this.state.showModal}>
+          <View style={{flex: 100, backgroundColor: 'white', justifyContent: 'center'}}>
 
-          {/*
-          <View style={{flex: 1, backgroundColor: "white", flexDirection: 'column'}}>
-            <Text>Add TODO Modal</Text>
-            <Button title="Close Modal" onPress={ () => this.toggleModal() } />
-          </View>
-          */}
-          <View style={{flexDirection: 'column-reverse', flex: 100, backgroundColor: 'white'}}>
+            <Icon 
+              style={{position: 'absolute', top: 25, right: 25}}
+              name="md-close" 
+              size={50} 
+              color="#000000" 
+              onPress={ () => this.toggleModal() } />
 
-            <View style={awesomeButtonWraperStyling}>
+            <TextInput 
+              style={{}}
+              placeholder=" Enter Thing TODO Here"
+              autoFocus={true}
+              onChangeText={ (text) => console.log(text) }
+              value={ this.state.logCaloriesTextInput } />
 
-              {/*
-              <AwesomeButton
-                raiseLevel={3}
-                type={'primary'}
-                backgroundColor={'#23e000'}
-                width={saveButtonWidth}
-                onPress={ () => this.saveThenGoBackAndClearTextInput() } >
-                <Text style={{color: '#FFFFFF', fontSize: saveScreenFontSize}}>Save</Text>
-              </AwesomeButton>
-              */}
-
-              <PaperButton 
-                mode="contained"
-                onPress={ () => this.toggleModal() }>
-                Save
-              </PaperButton>
-
-            </View>
-
-            <View style={textInputWrapperStyling}>
-              <TextInput 
-                style={{width: saveTextInputWidth, borderStyle: 'solid', borderWidth: 2, borderRadius: 5, borderColor: 'grey', fontSize: saveScreenFontSize, padding: 11, marginBottom: 3}}
-                placeholder=" Enter Thing TODO Here"
-                autoFocus={true}
-                onChangeText={ (text) => console.log(text) }
-                value={ this.state.logCaloriesTextInput } />
-            </View>
-
-            <View style={closeIconOuterWrapperStyling}>
-              <View style={closeIconInnerWrapperStyling}>
-                <Icon 
-                  style={{marginTop: 35, marginRight: 50}}
-                  name="md-close" 
-                  size={50} 
-                  color="#000000" 
-                  onPress={ () => this.toggleModal() } />
-              </View>
-            </View>
+            <PaperButton 
+              mode="contained"
+              onPress={ () => this.toggleModal() }>
+              Save
+            </PaperButton>
 
           </View>
-
         </Modal>
 
       </PaperProvider>
