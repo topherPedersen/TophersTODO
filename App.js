@@ -9,7 +9,6 @@ import {
   Dimensions,
   TextInput,
   Keyboard,
-  Modal,
 } from 'react-native';
 
 // React-Native Paper
@@ -25,11 +24,9 @@ import Icon from 'react-native-vector-icons/Ionicons';
 // Floating Action Button (FAB)
 import { FAB } from 'react-native-paper';
 
-// React-Native Modal
-// import Modal from 'react-native-modal';
-
 // Component(s)
 import TodoList from './components/TodoList';
+import AddTodoModal from './components/AddTodoModal';
 
 class App extends React.Component {
   constructor(props) {
@@ -119,31 +116,7 @@ class App extends React.Component {
 
         </SafeAreaView>
 
-        <Modal visible={true}>
-          <View style={{flex: 100, backgroundColor: 'white', justifyContent: 'flex-end'}}>
-
-            <Icon 
-              style={{position: 'absolute', top: 25, right: 25}}
-              name="md-close" 
-              size={50} 
-              color="#000000" 
-              onPress={ () => this.toggleModal() } />
-
-            <TextInput 
-              style={{}}
-              placeholder=" Enter Thing TODO Here"
-              autoFocus={true}
-              onChangeText={ (text) => console.log(text) }
-              value={ this.state.logCaloriesTextInput } />
-
-            <PaperButton 
-              mode="contained"
-              onPress={ () => this.toggleModal() }>
-              Save
-            </PaperButton>
-
-          </View>
-        </Modal>
+        <AddTodoModal visible={this.state.showModal} />
 
       </PaperProvider>
     );
