@@ -21,6 +21,15 @@ import LottieView from 'lottie-react-native';
 // Component(s)
 import Todo from './Todo';
 
+// React-Redux
+import { 
+  connect, 
+} from 'react-redux';
+// Redux Action(s)
+import { 
+  ADD_TODO,
+} from '../actions/types';
+
 class TodoList extends React.Component {
   constructor(props) {
     super(props);
@@ -53,4 +62,15 @@ class TodoList extends React.Component {
   }
 }
 
-export default TodoList;
+// Connect Redux Store, and Redux Action(s)
+const mapStateToProps = (state) => {
+  return { 
+    todos: state.todo,
+  };
+};
+const mapDispatchToProps = dispatch => {
+  return {
+    addTodo: (payload) => dispatch({type: ADD_TODO, payload: payload}),
+  };
+};
+export default connect(mapStateToProps, mapDispatchToProps)(TodoList);

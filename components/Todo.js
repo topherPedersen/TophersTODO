@@ -6,6 +6,15 @@ import {
   FlatList,
 } from 'react-native';
 
+// React-Redux
+import { 
+  connect, 
+} from 'react-redux';
+// Redux Action(s)
+import { 
+  ADD_TODO,
+} from '../actions/types';
+
 class Todo extends React.PureComponent {
   constructor(props) {
     super(props);
@@ -21,4 +30,15 @@ class Todo extends React.PureComponent {
 
 }
 
-export default Todo;
+// Connect Redux Store, and Redux Action(s)
+const mapStateToProps = (state) => {
+  return { 
+    todos: state.todo,
+  };
+};
+const mapDispatchToProps = dispatch => {
+  return {
+    addTodo: (payload) => dispatch({type: ADD_TODO, payload: payload}),
+  };
+};
+export default connect(mapStateToProps, mapDispatchToProps)(Todo);
