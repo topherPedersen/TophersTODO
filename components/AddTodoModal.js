@@ -49,13 +49,28 @@ class AddTodoModal extends React.PureComponent {
     this.setState({inputText: text});
   }
 
+  // Method which is called when a user presses the "save" button
+  // in order to add a new todo to the todo app
+  handleAddTodo() {
+    // Retrieve new todo item from local state
+    const newTodo = this.state.inputText;
+
+    // clear TextInput (local state)
+    this.setState({inputText: ""});
+
+    // Close Modal
+    this.props.closeModal();
+
+    // Add new todo to Redux Store
+    this.props.addTodo({task: newTodo});
+  }
+
   // REFERENCE (BUG FIX FOR AUTOFOCUSING TEXT INPUT ON MODAL IN REACT NATIVE)
   // https://stackoverflow.com/questions/42730400/focus-input-on-load-of-modal-in-react-native
 
   render() {
 
-    // If the modal is current NOT visible,
-    // render nothing <></>
+    // If the modal is current NOT visible, render nothing <></>
     if (this.props.visible === false) {
       return(<></>);
     }
@@ -84,7 +99,7 @@ class AddTodoModal extends React.PureComponent {
           <PaperButton 
             mode="contained"
             style={{backgroundColor: "purple"}}
-            onPress={ () => alert(this.state.inputText) }>
+            onPress={ () => this.handleAddTodo() }>
             Save
           </PaperButton>
 

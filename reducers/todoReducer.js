@@ -12,13 +12,10 @@ const todoReducer = (state, action) => {
 
   switch (action.type) {
     case 'ADD_TODO':
-      /*
-      const newState = {...state};
-      const newTitle = action.payload;
-      newState.allTitles.push(newTitle);
-      return newState;
-      */
-      return {...state};
+      const addTodoState = {...state};
+      const newTodo = action.payload;
+      addTodoState.todo.push(newTodo);
+      return addTodoState;
     default:
       return {...state};
   }
