@@ -59,6 +59,7 @@ class Todo extends React.PureComponent {
         <View style={{backgroundColor: 'white', alignSelf: 'stretch', flex: 1, flexDirection: 'row-reverse', alignItems: 'center', marginLeft: 30}}>
           <Checkbox 
             style={{marginRight: 25}}
+            color="purple"
             status={this.props.completed ? 'checked' : 'unchecked'}
             onPress={ () => this.handleCheckboxPressed() } />
         </View>
