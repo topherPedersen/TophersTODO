@@ -6,6 +6,9 @@ import {
   FlatList,
 } from 'react-native';
 
+// React-Native Paper
+import { Checkbox } from 'react-native-paper';
+
 // Import Lottie Animation Library
 import LottieView from 'lottie-react-native';
 
@@ -31,10 +34,12 @@ class Todo extends React.PureComponent {
 
         <Text style={{fontSize: 18, alignSelf: 'center', marginLeft: 25, color: "#404040"}}>{this.props.task}</Text>
 
-        <View style={{backgroundColor: 'pink', alignSelf: 'stretch', flex: 1, justifyContent: 'center'}}>
-          <Text style={{alignSelf: 'flex-end'}}>X</Text>
+        <View style={{backgroundColor: 'white', alignSelf: 'stretch', flex: 1, flexDirection: 'row-reverse', alignItems: 'center', marginLeft: 30}}>
+          <Checkbox 
+            style={{marginRight: 25}}
+            status={'unchecked'} />
         </View>
-        
+
       </View>
     );
   }
