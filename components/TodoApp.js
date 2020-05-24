@@ -35,6 +35,7 @@ import {
 // Redux Action(s)
 import { 
   ADD_TODO,
+  SHOW_MODAL,
 } from '../actions/types';
 
 
@@ -94,12 +95,14 @@ class TodoApp extends React.Component {
   }
 
   toggleModal() {
+    /*
     // Get Previous State
     const showModalState = {...this.state};
     // Toggle Modal Visibility
     showModalState.showModal = !showModalState.showModal;
     // Update Local State
     this.setState(showModalState);
+    */
   }
 
   render() {
@@ -125,7 +128,7 @@ class TodoApp extends React.Component {
             icon="plus"
             color="white"
             style={{position: 'absolute', bottom: "10%", alignSelf: 'center', width: 200, backgroundColor: "purple"}}
-            onPress={ () => this.toggleModal() } />
+            onPress={ () => this.props.showModal() } />
 
         </SafeAreaView>
 
@@ -141,11 +144,13 @@ class TodoApp extends React.Component {
 const mapStateToProps = (state) => {
   return { 
     todos: state.todo,
+    modal: state.modal,
   };
 };
 const mapDispatchToProps = dispatch => {
   return {
     addTodo: (payload) => dispatch({type: ADD_TODO, payload: payload}),
+    showModal: () => dispatch({type: SHOW_MODAL, payload: null}),
   };
 };
 export default connect(mapStateToProps, mapDispatchToProps)(TodoApp);

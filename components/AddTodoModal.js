@@ -55,7 +55,7 @@ class AddTodoModal extends React.PureComponent {
 
     return(
       <Modal 
-        visible={false}
+        visible={this.props.modal.showModal}
         onShow={ () => { this.textInput.focus(); }}>
 
         <KeyboardAvoidingView style={{flex: 100, backgroundColor: 'white', justifyContent: 'flex-end'}}>
@@ -93,6 +93,7 @@ class AddTodoModal extends React.PureComponent {
 const mapStateToProps = (state) => {
   return { 
     todos: state.todo,
+    modal: state.modal,
   };
 };
 const mapDispatchToProps = dispatch => {

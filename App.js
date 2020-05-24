@@ -38,10 +38,12 @@ import {
 } from 'react-redux';
 
 import todoReducer from './reducers/todoReducer';
+import modalReducer from './reducers/modalReducer';
 
 // Intialize Redux Store
 const rootReducer = combineReducers({
-  todos: todoReducer
+  todos: todoReducer,
+  modal: modalReducer,
 });
 const store = createStore(rootReducer);
 
