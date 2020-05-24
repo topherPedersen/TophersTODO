@@ -30,27 +30,24 @@ import { FAB } from 'react-native-paper';
 class AddTodoModal extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      closeModal: false,
-    };
+    this.state = {};
   }
 
   closeModal() {
-    this.setState({closeModal: true});
+    alert("close modal!");
   }
 
 
   render() {
 
-    let shouldDisplayModal;
-    if (this.state.closeModal !== true && this.props.visible === true) {
-      shouldDisplayModal = true;
-    } else {
-      shouldDisplayModal = false;
+    // If the modal is current NOT visible,
+    // render nothing <></>
+    if (this.props.visible === false) {
+      return(<></>);
     }
 
     return(
-      <Modal visible={shouldDisplayModal}>
+      <Modal visible={true}>
 
         <View style={{flex: 100, backgroundColor: 'white', justifyContent: 'flex-end'}}>
 
@@ -78,6 +75,7 @@ class AddTodoModal extends React.Component {
 
       </Modal>
     );
+
   }
 }
 
