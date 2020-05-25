@@ -51,6 +51,7 @@ if (Platform.OS === 'ios') {
   platformSpecificInputStyle = {};
 }
 
+// CSS StyleSheet
 const styles = StyleSheet.create({
   keyboardAvoidingView: {
     flex: 100, 

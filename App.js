@@ -43,15 +43,15 @@ import { persistStore, persistReducer } from 'redux-persist';
 import { PersistGate } from 'redux-persist/integration/react';
 import hardSet from 'redux-persist/lib/stateReconciler/hardSet';
 
+// Redux Reducers
 import todoReducer from './reducers/todoReducer';
 import modalReducer from './reducers/modalReducer';
 
-// Intialize Redux Store
+// Intialize Persistent Redux Store
 const rootReducer = combineReducers({
   todos: todoReducer,
   modal: modalReducer,
 });
-
 // Redux-Persist Configuration
 const persistConfig = {
   key: 'root',
@@ -59,13 +59,7 @@ const persistConfig = {
   whitelist: ['todos', 'modal'],
   stateReconciler: hardSet,
 };
-
-// *** COMMENTED OUT OLD 'store' IN FAVOR OF NEW REDUX-PERSIST STORE
-//     DELETE AFTER REDUX-PERSIST IS UP AND RUNNING
-// const store = createStore(rootReducer);
-
 const persistedReducer = persistReducer(persistConfig, rootReducer);
-
 const store = createStore(persistedReducer);
 const persistor = persistStore(store);
 
@@ -76,7 +70,6 @@ class App extends React.Component {
   }
 
   render() {
-
     return(
       <Provider store={store}>
         <PersistGate loading={null} persistor={persistor}>
