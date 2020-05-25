@@ -40,7 +40,46 @@ import {
 } from '../actions/types';
 
 const styles = StyleSheet.create({
-
+  safeAreaView: {
+    flex: 1, 
+    backgroundColor: "white",
+  },
+  titleWrapper: {
+    flex: 10, 
+    backgroundColor: "white", 
+    justifyContent: 'center', 
+    borderBottomWidth: 1, 
+    borderColor: "#E8E8E8", 
+    // REFERENCE (CSS box-shadow in React-Native)
+    // https://github.com/styled-components/styled-components/issues/709
+    shadowColor: '#000', 
+    shadowOffset: { 
+      width: 0, 
+      height: 2 
+    }, 
+    shadowOpacity: 0.8, 
+    shadowRadius: 2, 
+    elevation: 7,
+  },
+  title: {
+    textAlign: 'center', 
+    fontSize: 18, 
+    color: "#404040"
+  },
+  todoListWrapper: {
+    alignSelf: 'center', 
+    flex: 90, 
+    width: "100%", 
+    backgroundColor: "white", 
+    justifyContent: 'center'
+  },
+  fab: {
+    position: 'absolute', 
+    bottom: "10%", 
+    alignSelf: 'center', 
+    width: 200, 
+    backgroundColor: "purple"
+  },
 });
 
 class TodoApp extends React.Component {
@@ -49,13 +88,9 @@ class TodoApp extends React.Component {
     this.state = {};
   }
 
-  // REFERENCE (CSS box-shadow in React-Native)
-  // https://github.com/styled-components/styled-components/issues/709
-
   render() {
 
     return(
-
       <>
         <SafeAreaView style={{flex: 1, backgroundColor: "white"}}>
 
@@ -78,8 +113,6 @@ class TodoApp extends React.Component {
 
         <AddTodoModal />
       </>
-
-
     );
   }
 }
