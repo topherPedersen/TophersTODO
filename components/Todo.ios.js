@@ -74,19 +74,10 @@ class Todo extends React.PureComponent {
               color="#000000" 
               onPress={ () => this.handleRemoveIconPressed() } />
 
-          {/*
-          <Checkbox 
-            color="purple"
-            uncheckedColor="grey"
-            status={this.props.completed ? 'checked' : 'unchecked'}
-            onPress={ () => this.handleCheckboxPressed() } />
-          */}
-
           <Switch
+            color="purple"
             value={this.props.completed}
             onValueChange={() => this.handleSwitchToggled()} />
-
-          
 
         </View>
 
