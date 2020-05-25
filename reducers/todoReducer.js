@@ -3,6 +3,7 @@ import {
   ADD_TODO,
   MARK_COMPLETED,
   MARK_NOT_COMPLETED,
+  REMOVE_TODO,
 } from '../actions/types';
 
 const initialState = {
@@ -23,6 +24,22 @@ const todoReducer = (state, action) => {
       const newTodo = action.payload;
       addTodoState.todo.push(newTodo);
       return addTodoState;
+    case REMOVE_TODO:
+      const removeTodoState = {...state};
+      const removeTodoID = action.payload;
+      // Filter out the TODO item which we wish to remove
+      const removeTodoArray = removeTodoState.todo.filter( (todo) => {
+        if (todo.id === removeTodoID) {
+          return false; // return false to remove the item
+        } else if (todo.id !== removeTodoID) {
+          return true; // return true to keep all of the other items we wish to keep
+        }
+      });
+      // Update the todo array in our state tree
+      // with the new array of todo items which
+      // does NOT include the item we just removed
+      removeTodoState.todo = removeTodoArray;
+      return removeTodoState;
     case MARK_COMPLETED:
       // Make copy of previous state
       const markCompletedState = {...state};

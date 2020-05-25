@@ -23,6 +23,7 @@ import {
 import { 
   MARK_COMPLETED,
   MARK_NOT_COMPLETED,
+  REMOVE_TODO,
 } from '../actions/types';
 
 class Todo extends React.PureComponent {
@@ -33,12 +34,17 @@ class Todo extends React.PureComponent {
   handleCheckboxPressed() {
     const completed = this.props.completed;
     const id = this.props.id;
-    // alert(id);
     if (!completed) {
       this.props.markCompleted(id);
     } else if (completed) {
       this.props.markNotCompleted(id);
     }
+  }
+
+  handleRemoveIconPressed() {
+    // REMOVE_TODO
+    const id = this.props.id;
+    this.props.removeTodo(id);
   }
 
   render() {
@@ -66,7 +72,7 @@ class Todo extends React.PureComponent {
               name="md-close" 
               size={27} 
               color="#000000" 
-              onPress={ () => alert("Remove TODO Icon Tapped!") } />
+              onPress={ () => this.handleRemoveIconPressed() } />
 
           <Checkbox 
             color="purple"
@@ -92,6 +98,7 @@ const mapDispatchToProps = dispatch => {
   return {
     markCompleted: (payload) => dispatch({type: MARK_COMPLETED, payload: payload}),
     markNotCompleted: (payload) => dispatch({type: MARK_NOT_COMPLETED, payload: payload}),
+    removeTodo: (payload) => dispatch({type: REMOVE_TODO, payload: payload}),
   };
 };
 export default connect(mapStateToProps, mapDispatchToProps)(Todo);
