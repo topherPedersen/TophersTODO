@@ -41,6 +41,7 @@ import {
 import AsyncStorage from '@react-native-community/async-storage';
 import { persistStore, persistReducer } from 'redux-persist';
 import { PersistGate } from 'redux-persist/integration/react';
+import hardSet from 'redux-persist/lib/stateReconciler/hardSet';
 
 import todoReducer from './reducers/todoReducer';
 import modalReducer from './reducers/modalReducer';
@@ -55,6 +56,8 @@ const rootReducer = combineReducers({
 const persistConfig = {
   key: 'root',
   storage: AsyncStorage,
+  whitelist: ['todos', 'modal'],
+  stateReconciler: hardSet,
 };
 
 // *** COMMENTED OUT OLD 'store' IN FAVOR OF NEW REDUX-PERSIST STORE
