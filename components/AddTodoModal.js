@@ -38,8 +38,34 @@ import {
   CLOSE_MODAL,
 } from '../actions/types';
 
-const styles = StyleSheet.create({
+// Platform specific CSS styling
+let platformSpecificInputStyle;
+if (Platform.OS === 'ios') {
+  platformSpecificInputStyle = {
+    marginBottom: 10,
+  };
+} else {
+  // The default styling on android looks good,
+  // so set addTodoModalTextInputStyle to an
+  // empty object for android.
+  platformSpecificInputStyle = {};
+}
 
+const styles = StyleSheet.create({
+  keyboardAvoidingView: {
+    flex: 100, 
+    backgroundColor: "white", 
+    justifyContent: Platform.OS === 'ios' ? 'center' : 'flex-end',
+  },
+  icon: {
+    position: 'absolute', 
+    top: 25, 
+    right: 25
+  },
+  textInput: platformSpecificInputStyle,
+  paperButton: { 
+    backgroundColor: "purple" 
+  },
 });
 
 // Generate a random string of characters 
@@ -49,19 +75,6 @@ function uniqueID() {
   let b = Math.random().toString(36).substring(2);
   let uniqueStringOfRandomCharacters = a + b;
   return uniqueStringOfRandomCharacters;
-}
-
-// Platform specific CSS styling
-let addTodoModalTextInputStyle;
-if (Platform.OS === 'ios') {
-  addTodoModalTextInputStyle = {
-    marginBottom: 10,
-  };
-} else {
-  // The default styling on android looks good,
-  // so set addTodoModalTextInputStyle to an
-  // empty object for android.
-  addTodoModalTextInputStyle = {};
 }
 
 class AddTodoModal extends React.PureComponent {
@@ -119,17 +132,17 @@ class AddTodoModal extends React.PureComponent {
         isVisible={this.props.modal.showModal}
         onShow={ () => { this.textInput.focus(); }}>
 
-        <KeyboardAvoidingView style={{flex: 100, backgroundColor: "white", justifyContent: Platform.OS === 'ios' ? 'center' : 'flex-end'}}>
+        <KeyboardAvoidingView style={styles.keyboardAvoidingView}>
 
           <Icon 
-            style={{position: 'absolute', top: 25, right: 25}}
+            style={styles.icon}
             name="md-close" 
             size={50} 
             color="grey" 
             onPress={ () => this.props.closeModal() } />
 
           <TextInput 
-            style={addTodoModalTextInputStyle}
+            style={styles.textInput}
             ref={ (input) => { this.textInput = input; }}
             placeholder=" Enter Thing TODO Here"
             onChangeText={ (text) => this.handleTextInput(text) }
@@ -137,7 +150,7 @@ class AddTodoModal extends React.PureComponent {
 
           <PaperButton 
             mode="contained"
-            style={{backgroundColor: "purple"}}
+            style={styles.paperButton}
             onPress={ () => this.handleAddTodo() }>
             Save
           </PaperButton>

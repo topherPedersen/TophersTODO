@@ -90,7 +90,6 @@ class Todo extends React.PureComponent {
       </View>
     );
   }
-
 }
 
 // Connect Redux Store, and Redux Action(s)
