@@ -25,7 +25,7 @@ import Icon from 'react-native-vector-icons/Ionicons';
 // Floating Action Button (FAB)
 import { FAB } from 'react-native-paper';
 
-// Component(s)
+// Components
 import TodoList from './TodoList';
 import AddTodoModal from './AddTodoModal';
 
@@ -39,6 +39,7 @@ import {
   SHOW_MODAL,
 } from '../actions/types';
 
+// CSS
 const styles = StyleSheet.create({
   safeAreaView: {
     flex: 1, 
@@ -89,16 +90,15 @@ class TodoApp extends React.Component {
   }
 
   render() {
-
     return(
       <>
-        <SafeAreaView style={{flex: 1, backgroundColor: "white"}}>
+        <SafeAreaView style={styles.safeAreaView}>
 
-          <View style={{flex: 10, backgroundColor: "white", justifyContent: 'center', borderBottomWidth: 1, borderColor: "#E8E8E8", shadowColor: '#000', shadowOffset: { width: 0, height: 2 }, shadowOpacity: 0.8, shadowRadius: 2, elevation: 7,}}>
-            <Title style={{textAlign: 'center', fontSize: 18, color: "#404040"}}>Topher's TODO App</Title>
+          <View style={styles.titleWrapper}>
+            <Title style={styles.title}>Topher's TODO App</Title>
           </View>
 
-          <View style={{alignSelf: 'center', flex: 90, width: "100%", backgroundColor: "white", justifyContent: 'center'}}>
+          <View style={styles.todoListWrapper}>
             <TodoList />
           </View>
 
@@ -106,7 +106,7 @@ class TodoApp extends React.Component {
             label="Add TODO"
             icon="plus"
             color="white"
-            style={{position: 'absolute', bottom: "10%", alignSelf: 'center', width: 200, backgroundColor: "purple"}}
+            style={styles.fab}
             onPress={ () => this.props.showModal() } />
 
         </SafeAreaView>
