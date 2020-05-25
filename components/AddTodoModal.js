@@ -101,7 +101,7 @@ class AddTodoModal extends React.PureComponent {
         isVisible={this.props.modal.showModal}
         onShow={ () => { this.textInput.focus(); }}>
 
-        <KeyboardAvoidingView style={{flex: 100, backgroundColor: "white", justifyContent: 'flex-end'}}>
+        <KeyboardAvoidingView style={{flex: 100, backgroundColor: "white", justifyContent: Platform.OS === 'ios' ? 'center' : 'flex-end'}}>
 
           <Icon 
             style={{position: 'absolute', top: 25, right: 25}}
