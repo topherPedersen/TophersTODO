@@ -44,7 +44,7 @@ class TodoList extends React.Component {
     if (this.props.todos.todo.length === 0) {
       return(
         <>
-        <LottieView style={{backgroundColor: 'white', width: "150%", marginTop: "-5%", marginLeft: "5%", alignSelf: 'center'}} source={require('../animations/checklist.json')} loop={false} autoPlay/>
+          <LottieView style={{backgroundColor: 'white', width: "150%", marginTop: "-5%", marginLeft: "5%", alignSelf: 'center'}} source={require('../animations/checklist.json')} loop={false} autoPlay/>
         </>
       );
     }
