@@ -10,7 +10,7 @@ import {
 import Icon from 'react-native-vector-icons/Ionicons';
 
 // React-Native Paper
-import { Checkbox } from 'react-native-paper';
+import { Switch } from 'react-native-paper';
 
 // Import Lottie Animation Library
 import LottieView from 'lottie-react-native';
@@ -31,7 +31,7 @@ class Todo extends React.PureComponent {
     super(props);
   }
 
-  handleCheckboxPressed() {
+  handleSwitchToggled() {
     const completed = this.props.completed;
     const id = this.props.id;
     if (!completed) {
@@ -74,11 +74,19 @@ class Todo extends React.PureComponent {
               color="#000000" 
               onPress={ () => this.handleRemoveIconPressed() } />
 
+          {/*
           <Checkbox 
             color="purple"
             uncheckedColor="grey"
             status={this.props.completed ? 'checked' : 'unchecked'}
             onPress={ () => this.handleCheckboxPressed() } />
+          */}
+
+          <Switch
+            value={this.props.completed}
+            onValueChange={() => this.handleSwitchToggled()} />
+
+          
 
         </View>
 
