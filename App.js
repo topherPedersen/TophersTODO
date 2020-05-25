@@ -47,7 +47,7 @@ import hardSet from 'redux-persist/lib/stateReconciler/hardSet';
 import todoReducer from './reducers/todoReducer';
 import modalReducer from './reducers/modalReducer';
 
-// Intialize Persistent Redux Store
+// Initialize Persistent Redux Store
 const rootReducer = combineReducers({
   todos: todoReducer,
   modal: modalReducer,
