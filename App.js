@@ -31,7 +31,6 @@ import TodoApp from './components/TodoApp';
 import { 
   createStore,
   combineReducers,
-  applyMiddleware,
 } from 'redux';
 import { 
   connect, 
@@ -77,9 +76,11 @@ class App extends React.Component {
 
     return(
       <Provider store={store}>
-        <PaperProvider>
-          <TodoApp />
-        </PaperProvider>
+        <PersistGate loading={null} persistor={persistor}>
+          <PaperProvider>
+            <TodoApp />
+          </PaperProvider>
+        </PersistGate>
       </Provider>
     );
   }
