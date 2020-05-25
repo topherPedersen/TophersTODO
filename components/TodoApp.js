@@ -9,6 +9,7 @@ import {
   Dimensions,
   TextInput,
   Keyboard,
+  StyleSheet,
 } from 'react-native';
 
 // React-Native Paper
@@ -38,6 +39,9 @@ import {
   SHOW_MODAL,
 } from '../actions/types';
 
+const styles = StyleSheet.create({
+
+});
 
 class TodoApp extends React.Component {
   constructor(props) {

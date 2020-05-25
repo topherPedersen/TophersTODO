@@ -9,6 +9,7 @@ import {
   Dimensions,
   TextInput,
   KeyboardAvoidingView,
+  StyleSheet,
 } from 'react-native';
 
 // React-Native Modal
@@ -36,6 +37,10 @@ import {
   ADD_TODO,
   CLOSE_MODAL,
 } from '../actions/types';
+
+const styles = StyleSheet.create({
+
+});
 
 // Generate a random string of characters 
 // (Utility function for creating unique ids)
@@ -141,7 +146,6 @@ class AddTodoModal extends React.PureComponent {
 
       </Modal>
     );
-
   }
 }
 

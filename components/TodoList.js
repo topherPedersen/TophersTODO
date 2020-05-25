@@ -4,6 +4,7 @@ import {
   View,
   Text,
   FlatList,
+  StyleSheet,
 } from 'react-native';
 
 // React-Native Paper
@@ -29,6 +30,10 @@ import {
 import { 
   ADD_TODO,
 } from '../actions/types';
+
+const styles = StyleSheet.create({
+
+});
 
 class TodoList extends React.Component {
   constructor(props) {

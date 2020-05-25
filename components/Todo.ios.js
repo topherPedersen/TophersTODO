@@ -4,6 +4,7 @@ import {
   View,
   Text,
   FlatList,
+  StyleSheet,
 } from 'react-native';
 
 // React-Native Vector Icons
@@ -25,6 +26,10 @@ import {
   MARK_NOT_COMPLETED,
   REMOVE_TODO,
 } from '../actions/types';
+
+const styles = StyleSheet.create({
+
+});
 
 class Todo extends React.PureComponent {
   constructor(props) {
