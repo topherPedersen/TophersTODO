@@ -46,6 +46,19 @@ function uniqueID() {
   return uniqueStringOfRandomCharacters;
 }
 
+// Platform specific CSS styling
+let addTodoModalTextInputStyle;
+if (Platform.OS === 'ios') {
+  addTodoModalTextInputStyle = {
+    marginBottom: 10,
+  };
+} else {
+  // The default styling on android looks good,
+  // so set addTodoModalTextInputStyle to an
+  // empty object for android.
+  addTodoModalTextInputStyle = {};
+}
+
 class AddTodoModal extends React.PureComponent {
   constructor(props) {
     super(props);
@@ -111,7 +124,7 @@ class AddTodoModal extends React.PureComponent {
             onPress={ () => this.props.closeModal() } />
 
           <TextInput 
-            style={{}}
+            style={addTodoModalTextInputStyle}
             ref={ (input) => { this.textInput = input; }}
             placeholder=" Enter Thing TODO Here"
             onChangeText={ (text) => this.handleTextInput(text) }
