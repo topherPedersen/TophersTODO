@@ -107,7 +107,7 @@ class AddTodoModal extends React.PureComponent {
             style={{position: 'absolute', top: 25, right: 25}}
             name="md-close" 
             size={50} 
-            color="#000000" 
+            color="grey" 
             onPress={ () => this.props.closeModal() } />
 
           <TextInput 
