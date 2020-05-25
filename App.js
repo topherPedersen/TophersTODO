@@ -31,11 +31,17 @@ import TodoApp from './components/TodoApp';
 import { 
   createStore,
   combineReducers,
+  applyMiddleware,
 } from 'redux';
 import { 
   connect, 
   Provider 
 } from 'react-redux';
+
+// Import AsyncStorage + Redux-Persist
+import AsyncStorage from '@react-native-community/async-storage';
+import { persistStore, persistReducer } from 'redux-persist';
+import { PersistGate } from 'redux-persist/integration/react';
 
 import todoReducer from './reducers/todoReducer';
 import modalReducer from './reducers/modalReducer';
@@ -45,7 +51,21 @@ const rootReducer = combineReducers({
   todos: todoReducer,
   modal: modalReducer,
 });
-const store = createStore(rootReducer);
+
+// Redux-Persist Configuration
+const persistConfig = {
+  key: 'root',
+  storage: AsyncStorage,
+};
+
+// *** COMMENTED OUT OLD 'store' IN FAVOR OF NEW REDUX-PERSIST STORE
+//     DELETE AFTER REDUX-PERSIST IS UP AND RUNNING
+// const store = createStore(rootReducer);
+
+const persistedReducer = persistReducer(persistConfig, rootReducer);
+
+const store = createStore(persistedReducer);
+const persistor = persistStore(store);
 
 class App extends React.Component {
   constructor(props) {
