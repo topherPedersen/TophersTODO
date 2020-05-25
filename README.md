@@ -1,7 +1,5 @@
 # TophersTODO
 
-this thing working?
-
 <p align="left">
-  <img alt="react-native-paper" src="screenshots/tophers-todo.png" width="600">
+  <img alt="react-native-paper" src="screenshots/tophers-todo.png" width="300">
 </p>
