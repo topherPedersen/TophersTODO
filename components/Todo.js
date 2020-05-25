@@ -6,6 +6,9 @@ import {
   FlatList,
 } from 'react-native';
 
+// React-Native Vector Icons
+import Icon from 'react-native-vector-icons/Ionicons';
+
 // React-Native Paper
 import { Checkbox } from 'react-native-paper';
 
@@ -42,8 +45,8 @@ class Todo extends React.PureComponent {
 
     // Trim the length of our todo item text if necessary
     let todoText;
-    if (this.props.task.length >= 26) {
-      todoText = this.props.task.substr(0, 25) + "...";
+    if (this.props.task.length >= 21) {
+      todoText = this.props.task.substr(0, 20) + "...";
     } else {
       todoText = this.props.task;
     }
@@ -56,12 +59,21 @@ class Todo extends React.PureComponent {
 
         <Text style={{fontSize: 15, alignSelf: 'center', marginLeft: 25, color: "#404040", textDecorationLine: this.props.completed ? 'line-through' : 'none'}}>{todoText}</Text>
 
-        <View style={{backgroundColor: 'white', alignSelf: 'stretch', flex: 1, flexDirection: 'row-reverse', alignItems: 'center', marginLeft: 30}}>
+        <View style={{backgroundColor: 'white', alignSelf: 'stretch', flex: 1, flexDirection: 'row-reverse', alignItems: 'center', marginLeft: 20}}>
+
+          <Icon 
+              style={{marginLeft: 10, marginTop: 2, color: "grey"}}
+              name="md-close" 
+              size={27} 
+              color="#000000" 
+              onPress={ () => alert("Remove TODO Icon Tapped!") } />
+
           <Checkbox 
-            style={{marginRight: 25}}
             color="purple"
+            uncheckedColor="grey"
             status={this.props.completed ? 'checked' : 'unchecked'}
             onPress={ () => this.handleCheckboxPressed() } />
+
         </View>
 
       </View>
