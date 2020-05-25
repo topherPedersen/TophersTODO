@@ -31,10 +31,6 @@ import {
   ADD_TODO,
 } from '../actions/types';
 
-const styles = StyleSheet.create({
-
-});
-
 class TodoList extends React.Component {
   constructor(props) {
     super(props);
