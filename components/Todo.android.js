@@ -27,6 +27,7 @@ import {
   REMOVE_TODO,
 } from '../actions/types';
 
+// CSS
 const styles = StyleSheet.create({
 
 });

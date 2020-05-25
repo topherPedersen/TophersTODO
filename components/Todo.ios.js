@@ -27,15 +27,33 @@ import {
   REMOVE_TODO,
 } from '../actions/types';
 
+// CSS
 const styles = StyleSheet.create({
-
+  parentView: {
+    height: 100, 
+    flexDirection: 'row'
+  },
+  iconSwitchWrapper: {
+    backgroundColor: 'white', 
+    alignSelf: 'stretch', 
+    flex: 1, 
+    flexDirection: 'row-reverse', 
+    alignItems: 'center', 
+    marginLeft: 20,
+  },
+  icon: {
+    marginLeft: 20, 
+    marginTop: 2, 
+    color: "grey",
+  },
 });
 
 class Todo extends React.PureComponent {
   constructor(props) {
     super(props);
   }
-
+  
+  // MARK_COMPLETED or MARK_NOT_COMPLETED
   handleSwitchToggled() {
     const completed = this.props.completed;
     const id = this.props.id;
@@ -46,8 +64,8 @@ class Todo extends React.PureComponent {
     }
   }
 
+  // REMOVE_TODO
   handleRemoveIconPressed() {
-    // REMOVE_TODO
     const id = this.props.id;
     this.props.removeTodo(id);
   }
@@ -64,16 +82,18 @@ class Todo extends React.PureComponent {
 
     return(
 
-      <View style={{height: 100, flexDirection: 'row'}}>
+      <View style={styles.parentView}>
 
+        {/* Leave inline styling for LottieView as the styling is dependent upon access to props */}
         <LottieView style={{backgroundColor: 'white', height: 50, marginTop: this.props.completed ? 0 : 2, marginLeft: 10, alignSelf: 'center'}} source={ this.props.completed ? require('../animations/checkmark.json') : require('../animations/attention.json')} loop={false} autoPlay/>
 
+        {/* Leave inline styling for TODO Text as the styling is dependent upon access to props */}
         <Text style={{fontSize: 15, alignSelf: 'center', marginTop: 2, marginLeft: 25, color: "#404040", textDecorationLine: this.props.completed ? 'line-through' : 'none'}}>{todoText}</Text>
 
-        <View style={{backgroundColor: 'white', alignSelf: 'stretch', flex: 1, flexDirection: 'row-reverse', alignItems: 'center', marginLeft: 20}}>
+        <View style={styles.iconSwitchWrapper}>
 
           <Icon 
-              style={{marginLeft: 20, marginTop: 2, color: "grey"}}
+              style={styles.icon}
               name="md-close" 
               size={27} 
               color="#000000" 
@@ -89,7 +109,6 @@ class Todo extends React.PureComponent {
       </View>
     );
   }
-
 }
 
 // Connect Redux Store, and Redux Action(s)
